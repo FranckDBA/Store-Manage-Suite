@@ -1,0 +1,27 @@
+
+{
+  "expo": {
+    "name": "Store Manager Suite",
+    "slug": "store-manager-suite-mobile",
+    "scheme": "storemanagersuite",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      [
+        "expo-sqlite",
+        {
+          "enableFTS": false
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "android": {
+      "package": "com.storemanagersuite.mobile",
+      "versionCode": 3,
+      "softwareKeyboardLayoutMode": "resize"
+    }
+  }
+}
