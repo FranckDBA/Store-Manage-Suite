@@ -1,4 +1,3 @@
-
 export const API_BASE_URL = "http://172.22.6.148:8000/api";
 
 export type ApiUser = {
@@ -71,6 +70,7 @@ export async function login(
 export async function fetchProducts(token: string) {
   return request<{ data: ApiProduct[] }>("/products", token);
 }
+
 export async function fetchCurrentUser(token: string) {
   return request<ApiUser>("/user", token);
 }
@@ -81,26 +81,36 @@ export async function logout(token: string) {
   });
 }
 
-
-export async function syncSaleToLaravel(token: string, payload: unknown) {
-  return request<{ message: string; sale_id: number; already_synced?: boolean }>(
-    "/sales/sync",
-    token,
-    { method: "POST", body: JSON.stringify(payload) },
-  );
+export async function syncSaleToLaravel(
+  token: string,
+  payload: unknown,
+) {
+  return request<{
+    message: string;
+    sale_id: number;
+    already_synced?: boolean;
+  }>("/sales/sync", token, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 }
 
-
-/** Vérifie le mot de passe de l'utilisateur connecté sans créer de nouveau jeton Sanctum.
- * Nécessite POST /api/confirm-password protégé par auth:sanctum côté Laravel.
+/**
+ * Vérifie le mot de passe de l'utilisateur connecté sans créer
+ * de nouveau jeton Sanctum.
+ *
+ * Nécessite POST /api/confirm-password protégé par auth:sanctum
+ * côté Laravel.
  */
-export async function confirmCurrentPassword(token: string, password: string) {
+export async function confirmCurrentPassword(
+  token: string,
+  password: string,
+) {
   return request<{ message: string }>("/confirm-password", token, {
     method: "POST",
     body: JSON.stringify({ password }),
   });
 }
-
 
 export type CreateProductInput = {
   name: string;
@@ -110,15 +120,25 @@ export type CreateProductInput = {
   stock: number;
   category?: string | null;
   is_active?: boolean;
+
   /** URI locale uniquement : l'API JSON actuelle ne téléverse pas les fichiers. */
   image_uri?: string | null;
 };
 
-/** Crée un produit via l'API Laravel. Nécessite POST /api/products avec auth:sanctum. */
-export async function createProduct(token: string, input: CreateProductInput) {
-  return request<{ data?: ApiProduct; product?: ApiProduct; message?: string }>(
-    "/products",
-    token,
-    { method: "POST", body: JSON.stringify(input) },
-  );
+/**
+ * Crée un produit via l'API Laravel.
+ * Nécessite POST /api/products avec auth:sanctum.
+ */
+export async function createProduct(
+  token: string,
+  input: CreateProductInput,
+) {
+  return request<{
+    data?: ApiProduct;
+    product?: ApiProduct;
+    message?: string;
+  }>("/products", token, {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
 }

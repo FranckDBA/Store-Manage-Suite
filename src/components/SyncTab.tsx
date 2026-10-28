@@ -25,7 +25,7 @@ export default function SyncTab(props: Props) {
 
               <Text className="text-[13px] text-muted leading-5 mt-1">
 
-                en attente d'envoi vers le serveur Laravel.
+                en attente d'envoi vers le serveur.
 
               </Text>
 
@@ -45,7 +45,7 @@ export default function SyncTab(props: Props) {
               title={
                 syncingProducts
                   ? "Synchronisation des produits..."
-                  : "Synchroniser les produits Laravel"
+                  : "Synchroniser les produits"
               }
               onPress={() => void syncCatalog()}
               disabled={syncingProducts}

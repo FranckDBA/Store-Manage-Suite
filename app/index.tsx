@@ -1731,7 +1731,7 @@ async function syncCatalog() {
 
               <Text className="text-[13px] text-muted leading-5 mt-1">
 
-                en attente d'envoi vers le serveur Laravel.
+                en attente d'envoi vers le serveur.
 
               </Text>
 
@@ -1739,7 +1739,7 @@ async function syncCatalog() {
 
               <Text className="text-[13px] text-ink leading-5">
 
-                Les ventes sont enregistrées localement et envoyées automatiquement lorsque le réseau et le serveur Laravel sont disponibles. Tu peux également lancer une synchronisation manuelle. Les ventes en attente restent conservées sur cet appareil.
+                Les ventes sont enregistrées localement et envoyées automatiquement lorsque le réseau et le serveur  sont disponibles. Tu peux également lancer une synchronisation manuelle. Les ventes en attente restent conservées sur cet appareil.
 
               </Text>
 
@@ -1753,7 +1753,7 @@ async function syncCatalog() {
 
                   ? "Synchronisation des produits..."
 
-                  : "Synchroniser les produits Laravel"
+                  : "Synchroniser les produits"
 
               }
 

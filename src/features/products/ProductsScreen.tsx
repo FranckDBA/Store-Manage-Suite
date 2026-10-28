@@ -80,11 +80,11 @@ export default function ProductsScreen({ products, onRefresh, onSync, syncing }:
       <View className="flex-1 bg-bg justify-center px-6">
         <View className="bg-white border border-line rounded-2xl p-5 gap-3">
           <Text className="text-xl font-black text-ink">🔒 Onglet Produits protégé</Text>
-          <Text className="text-sm text-muted">Confirme le mot de passe de ton compte Laravel pour accéder au stock.</Text>
-          <TextInput value={password} onChangeText={setPassword} secureTextEntry placeholder="Mot de passe Laravel" autoCapitalize="none" autoCorrect={false} autoComplete="password" className="border border-line rounded-xl px-3 py-3 text-ink" onSubmitEditing={() => void unlockWithLaravelPassword()} />
+          <Text className="text-sm text-muted">Confirme le mot de passe de ton compte  pour accéder au stock.</Text>
+          <TextInput value={password} onChangeText={setPassword} secureTextEntry placeholder="Saisie ton mot de passe" autoCapitalize="none" autoCorrect={false} autoComplete="password" className="border border-line rounded-xl px-3 py-3 text-ink" onSubmitEditing={() => void unlockWithLaravelPassword()} />
           {!!passwordError && <Text className="text-sm text-danger">{passwordError}</Text>}
           <Pressable onPress={() => void unlockWithLaravelPassword()} disabled={savingPassword} className={`rounded-xl py-3.5 items-center ${savingPassword ? "bg-gray-400" : "bg-ink"}`}><Text className="text-white font-black">{savingPassword ? "Vérification…" : "Déverrouiller"}</Text></Pressable>
-          <Text className="text-[11px] text-muted">Le mot de passe est vérifié par Laravel. Il n'est pas enregistré sur l'appareil.</Text>
+         
         </View>
       </View>
     );

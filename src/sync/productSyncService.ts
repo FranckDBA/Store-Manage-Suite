@@ -19,7 +19,7 @@ export async function syncPendingProductCreates(db: SQLiteDatabase, token: strin
     });
     const product = response.data ?? response.product;
     if (!product?.id) {
-      throw new Error("Laravel n'a pas renvoyé l'identifiant du produit créé. La création reste en attente.");
+      throw new Error("Le serveur n'a pas renvoyé l'identifiant du produit créé. La création reste en attente.");
     }
     await db.withTransactionAsync(async () => {
       // Ne pas écraser un ID serveur existant : la création doit être idempotente côté API.

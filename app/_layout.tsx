@@ -1,4 +1,3 @@
-
 import {
   createContext,
   useCallback,
@@ -67,7 +66,7 @@ function SessionGuard() {
           await clearAuthSession();
           setAuthenticated(false);
         } else {
-          // En cas d'erreur réseau, préserver la session locale.
+          // Si le réseau est indisponible, conserver la session locale.
           setAuthenticated(true);
         }
       }
@@ -80,17 +79,24 @@ function SessionGuard() {
   }, [setAuthenticated]);
 
   useEffect(() => {
-    checkSession();
+    void checkSession();
   }, [checkSession]);
 
   useEffect(() => {
     if (checking) return;
 
-    const onLoginScreen = segments[0] === "login";
+    const firstSegment = segments[0];
+    const onLoginScreen = firstSegment === "login";
+    const onSplashScreen = firstSegment === "post-login-splash";
 
-    if (!authenticated && !onLoginScreen) {
-      router.replace("/login");
-    } else if (authenticated && onLoginScreen) {
+    // Le splash est autorisé pour les utilisateurs connectés et déconnectés.
+    // Il choisit ensuite sa destination selon l'état d'authentification.
+    if (!authenticated && !onLoginScreen && !onSplashScreen) {
+      router.replace("/post-login-splash");
+      return;
+    }
+
+    if (authenticated && onLoginScreen) {
       router.replace("/");
     }
   }, [authenticated, checking, segments, router]);
@@ -106,7 +112,12 @@ function SessionGuard() {
     );
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack
+      initialRouteName="post-login-splash"
+      screenOptions={{ headerShown: false }}
+    />
+  );
 }
 
 function AuthProvider({ children }: { children: ReactNode }) {

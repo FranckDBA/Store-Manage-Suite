@@ -31,5 +31,5 @@ export async function syncPendingSales(db: SQLiteDatabase): Promise<{ ok: boolea
   if (errors.length) {
     return { ok: synced > 0, message: `${synced} vente(s) synchronisée(s), ${errors.length} échec(s). ${errors.slice(0,2).join(" ; ")}` };
   }
-  return { ok: true, message: `${synced} vente(s) synchronisée(s) avec Laravel.` };
+  return { ok: true, message: `${synced} vente(s) synchronisée(s).` };
 }

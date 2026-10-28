@@ -1,8 +1,8 @@
-
 {
   "expo": {
     "name": "Store Manager Suite",
     "slug": "store-manager-suite-mobile",
+    "icon": "./assets/images/logo.png",
     "scheme": "storemanagersuite",
     "version": "2.0.0",
     "orientation": "portrait",
@@ -20,8 +20,20 @@
     ],
     "android": {
       "package": "com.storemanagersuite.mobile",
-      "versionCode": 3,
-      "softwareKeyboardLayoutMode": "resize"
-    }
+      "versionCode": 4,
+      "softwareKeyboardLayoutMode": "resize",
+      "usesCleartextTraffic": true,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4a63e664-f4b6-4212-a5be-a4792442a81e"
+      }
+    },
+    "owner": "franckdba"
   }
 }
