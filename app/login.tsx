@@ -556,16 +556,17 @@ const styles = StyleSheet.create({
   backgroundColor: "#00856A",
 },
 
-loginGradient: {
-  width: "100%",
-  minHeight: 55,
-  borderRadius: 16,
-  overflow: "hidden",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  paddingHorizontal: 12,
-},
+  loginGradient: {
+    flex: 1,
+    width: "100%",
+    minHeight: 55,
+    borderRadius: 16,
+    overflow: "hidden",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 12,
+  },
 
   loginButtonPressed: {
     opacity: 0.86,
@@ -575,14 +576,7 @@ loginGradient: {
     opacity: 0.75,
   },
 
-  loginGradient: {
-    flex: 1,
-    minHeight: 55,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 12,
-  },
+
 
   loginButtonText: {
     color: "#FFFFFF",

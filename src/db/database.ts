@@ -143,7 +143,11 @@ export async function syncProducts(
   db: SQLiteDatabase,
   products: {
     id: number; name: string; price: string | number; purchase_price?: string | number | null;
-    stock: number; category?: { name: string } | string | null; image?: string | null;
+    stock: number;
+    category?: { name: string } | string | null;
+    image?: string | null;
+    description?: string | null;
+    is_active?: boolean | number | null;
   }[],
 ): Promise<void> {
   await db.withTransactionAsync(async () => {
@@ -158,7 +162,7 @@ export async function syncProducts(
            purchase_price=excluded.purchase_price, stock=excluded.stock, category=excluded.category,
            updated_at=excluded.updated_at, image_url=excluded.image_url,
            description=excluded.description, is_active=excluded.is_active`,
-        product.id, product.name, Number(product.price), Number(product.purchase_price ?? 0), product.stock, category, product.image ?? null, product.description ?? null, product.is_active === false ? 0 : 1,
+        product.id, product.name, Number(product.price), Number(product.purchase_price ?? 0), product.stock, category, product.image ?? null, product.description ?? null, product.is_active === false || product.is_active === 0 ? 0 : 1,
       );
     }
     const pendingCreates = await db.getAllAsync<{local_id:number;name:string;price:number;purchase_price:number;stock:number;category:string|null;description:string|null;image_uri:string|null;is_active:number}>(

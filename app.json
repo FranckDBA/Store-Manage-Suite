@@ -1,3 +1,4 @@
+
 {
   "expo": {
     "name": "Store Manager Suite",
@@ -16,13 +17,14 @@
           "enableFTS": false
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-notifications"
     ],
     "android": {
       "package": "com.storemanagersuite.mobile",
       "versionCode": 4,
+      "googleServicesFile": "./google-services.json",
       "softwareKeyboardLayoutMode": "resize",
-      "usesCleartextTraffic": true,
       "permissions": [
         "android.permission.INTERNET",
         "android.permission.ACCESS_NETWORK_STATE"

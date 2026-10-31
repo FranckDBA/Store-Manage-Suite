@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1080757867036",
+    "project_id": "store-manager-suite",
+    "storage_bucket": "store-manager-suite.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080757867036:android:1fd9a24bfcfac3815c45d9",
+        "android_client_info": {
+          "package_name": "com.storemanagersuite.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDgPpChQv7A_2h6alhNKtHq7_1WcPPMtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

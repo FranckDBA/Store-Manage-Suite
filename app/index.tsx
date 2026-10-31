@@ -654,7 +654,10 @@ async function syncCatalog() {
         }
 
         const pendingCount = await countPendingSales(db);
-        if (disposed || pendingCount === 0) return;
+        const pendingOperations = await db.getFirstAsync<{ count: number }>(
+          "SELECT (SELECT COUNT(*) FROM pending_product_edits) + (SELECT COUNT(*) FROM stock_movements WHERE sync_status='pending') AS count"
+        );
+        if (disposed || (pendingCount === 0 && (pendingOperations?.count ?? 0) === 0)) return;
 
         const token = await getAuthToken();
         if (disposed || !token) return;
